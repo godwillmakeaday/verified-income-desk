@@ -1,134 +1,113 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Signal from "@/components/Signal";
+import SectionHead from "@/components/SectionHead";
+import { getIncomeModel } from "@/lib/incomeModels";
+
+const model = getIncomeModel("local-business-website-services");
 
 export const metadata: Metadata = {
-  title: "Local business website services",
+  title: "Local Business Website Services",
   description:
-    "A verified, low-capital income model: building and maintaining simple websites for nearby businesses that have none. Field-tested by Verified Income Desk.",
+    "A formal Verified Income Desk model brief on local business website services, including fit, tools, first 7 days, risks, proof signals, and ethical boundary.",
 };
 
-const facts: [string, string][] = [
-  ["Registry code", "IM-01"],
-  ["Proof signal", "Verified"],
-  ["Capital required", "Low"],
-  ["Effort profile", "Skill-led"],
-  ["Field reference", "FT-2024-07"],
-  ["Hard part", "Client acquisition"],
+const whoFits = [
+  "People who can learn simple website delivery and communicate clearly with small business owners.",
+  "People with patience for direct outreach, follow-up, revisions, and basic customer service.",
+  "People who can show a clean sample before asking a business owner to pay.",
 ];
 
-const steps = [
-  {
-    n: "01",
-    t: "Build one real reference site",
-    d: "Before charging anyone, build a single clean site for a real or sample local business so prospects can see exactly what they are buying.",
-  },
-  {
-    n: "02",
-    t: "Pick a narrow local segment",
-    d: "Choose one type of business with no web presence — a clinic, a school, a tradesperson, a small shop — so your outreach and examples stay focused.",
-  },
-  {
-    n: "03",
-    t: "Run direct outreach",
-    d: "Acquisition is the constraint, not the build. Approach businesses directly with a fixed, transparent price and a working example.",
-  },
-  {
-    n: "04",
-    t: "Charge build plus maintenance",
-    d: "Quote a one-time build fee and a small recurring maintenance fee. The recurring fee is what turns a gig into income.",
-  },
-  {
-    n: "05",
-    t: "Keep delivery simple",
-    d: "Use a small, repeatable stack you can deliver reliably. Resist over-building; the client wants to be found and contacted, nothing more.",
-  },
+const whoDoesNotFit = [
+  "Anyone expecting immediate earnings without outreach, skill, trust, or delivery discipline.",
+  "Anyone who wants to sell complicated builds before mastering simple, useful pages.",
+  "Anyone unwilling to support clients after the first delivery.",
 ];
 
-const honest = [
-  {
-    t: "Why it carries a Verified signal",
-    d: "In a 12-week field test, a single operator landed and retained three paying clients using cold outreach and a fixed maintenance fee. The path was reproducible.",
-  },
-  {
-    t: "What is genuinely hard",
-    d: "Delivery is straightforward; getting the first clients is not. Expect most outreach to go unanswered. The model rewards persistence in acquisition, not technical flash.",
-  },
-  {
-    t: "What it is not",
-    d: "Not passive income, not a guaranteed pipeline, and not a substitute for actually learning to build and maintain a site. It is honest, skill-led service work.",
-  },
+const firstSevenDays = [
+  "Build one sample site for a realistic local business category.",
+  "Write a one-page offer with scope, price range, and maintenance boundary.",
+  "List 20 nearby businesses with weak or absent web presence.",
+  "Contact five prospects respectfully and record every response.",
+  "Improve the sample using real objections and questions.",
+  "Follow up once with prospects who showed interest.",
+  "Review evidence: replies, objections, meetings, and any serious inquiry.",
+];
+
+const firstThirtyDays = [
+  "Contact a narrow group of prospects consistently rather than changing market every day.",
+  "Create two additional sample pages for different business types.",
+  "Test one fixed build price and one maintenance option.",
+  "Keep a simple ledger of outreach, replies, meetings, objections, paid work, and delivery time.",
+  "Document every failure point: pricing resistance, trust concern, delivery issue, or weak proof sample.",
+];
+
+const commonLies = [
+  "Every business owner wants a website immediately.",
+  "The build is the hard part and clients will come once you can design.",
+  "A beautiful homepage is enough without trust, contact clarity, and follow-up.",
+  "Monthly maintenance happens automatically after the first sale.",
+];
+
+const ethicalBoundary = [
+  "Do not copy another business site and present it as original work.",
+  "Do not promise search rankings, sales, or customer flow you cannot control.",
+  "Do not hide hosting, domain, renewal, or maintenance costs from the client.",
+  "Do not collect client passwords without explaining access, security, and handover.",
 ];
 
 export default function LocalBusinessWebsiteServices() {
+  if (!model) return null;
+
   return (
     <>
-      {/* Breadcrumb + header */}
       <section className="border-b border-line bg-ink text-paper">
         <div className="desk-wrap py-16 md:py-20">
-          <nav className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-paper/50" aria-label="Breadcrumb">
-            <Link href="/" className="focusable hover:text-paper">
-              Desk
-            </Link>
+          <nav className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-paper/50" aria-label="Breadcrumb">
+            <Link href="/" className="focusable hover:text-paper">Desk</Link>
             <span aria-hidden>/</span>
-            <Link href="/#income-models" className="focusable hover:text-paper">
-              Income models
-            </Link>
+            <Link href="/income-models" className="focusable hover:text-paper">Income Registry</Link>
             <span aria-hidden>/</span>
-            <span className="text-paper/80">IM-01</span>
+            <span className="text-paper/80">{model.code}</span>
           </nav>
-
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Signal kind="verified" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-paper/50">
-              Featured income model
-            </span>
+            <Signal kind={model.status} />
+            <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-paper/50">Formal model brief</span>
           </div>
-
-          <h1 className="mt-5 max-w-3xl font-display text-[2.2rem] font-medium leading-[1.12] md:text-[3.2rem]">
-            Local business website services
+          <h1 className="mt-5 max-w-4xl font-display text-[2.3rem] font-medium leading-[1.08] md:text-[3.8rem]">
+            {model.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-paper/75">
-            Building and maintaining simple websites for nearby shops, clinics, schools, and
-            tradespeople who currently have no web presence. The most reproducible model on the
-            Verified Income Desk — low capital, skill-led, and honest about where the difficulty
-            really sits.
-          </p>
+          <p className="mt-5 max-w-3xl text-[17px] leading-relaxed text-paper/75">{model.summary}</p>
         </div>
       </section>
 
-      {/* Fact panel */}
       <section className="desk-wrap py-16 md:py-20">
-        <div className="grid gap-10 md:grid-cols-[1fr_320px]">
+        <div className="grid gap-10 lg:grid-cols-[1fr_340px]">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-[12px] text-verified">A</span>
-              <span className="h-px w-8 bg-line" />
-              <span className="eyebrow">The model in plain terms</span>
-            </div>
-            <div className="mt-5 space-y-4 text-[16px] leading-relaxed text-ink/80">
+            <SectionHead index="01" eyebrow="Summary" title="A simple service model, not an income promise" />
+            <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-ink/78">
               <p>
-                A large number of small businesses still have no website at all. They lose
-                customers who search for them and find nothing. This model closes that gap: you
-                build a small, professional site and keep it running for a modest recurring fee.
+                This model begins from a clear business need: many local operators need a credible page that explains what they do, where they are, how to contact them, and why a customer should trust them. The worker earns by delivering that service and maintaining it responsibly.
               </p>
               <p>
-                It is service work, not a system. There is no deposit to pay, no one to recruit,
-                and no promise of fixed returns. You are paid by a real client for a real
-                deliverable — which is exactly why it earns a Verified signal here.
+                The model is realistic because the mechanism is visible: a client pays for a useful service. The risk is also visible: the client must first trust the operator, understand the offer, and agree that the website solves a real problem.
               </p>
             </div>
           </div>
-
           <aside className="rounded-md border border-line bg-surface p-6">
-            <h2 className="font-mono text-[11px] uppercase tracking-eyebrow text-slate">
-              Model facts
-            </h2>
-            <dl className="mt-4 space-y-3 font-mono text-[12px]">
-              {facts.map(([k, v]) => (
-                <div key={k} className="flex items-center justify-between border-b border-line pb-3 last:border-0 last:pb-0">
-                  <dt className="uppercase tracking-[0.08em] text-slate">{k}</dt>
-                  <dd className={v === "Verified" ? "text-verified" : "text-ink"}>{v}</dd>
+            <h2 className="font-mono text-[11px] uppercase tracking-eyebrow text-slate">Model facts</h2>
+            <dl className="mt-4 space-y-3 text-[13px] leading-relaxed">
+              {[
+                ["Registry code", model.code],
+                ["Category", model.category],
+                ["Status", "Verified mechanism; individual results not guaranteed"],
+                ["Cost level", model.startingCostLevel],
+                ["Skill level", model.skillLevel],
+                ["Timeframe", model.realisticTimeframe],
+              ].map(([key, value]) => (
+                <div key={key} className="border-b border-line pb-3 last:border-b-0 last:pb-0">
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-slate">{key}</dt>
+                  <dd className="mt-1 text-ink/78">{value}</dd>
                 </div>
               ))}
             </dl>
@@ -136,74 +115,136 @@ export default function LocalBusinessWebsiteServices() {
         </div>
       </section>
 
-      {/* Operating sequence */}
       <section className="border-y border-line bg-surface py-16 md:py-20">
-        <div className="desk-wrap">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[12px] text-verified">B</span>
-            <span className="h-px w-8 bg-line" />
-            <span className="eyebrow">How to run it</span>
+        <div className="desk-wrap grid gap-6 md:grid-cols-2">
+          <div className="rounded-md border border-line bg-paper p-7">
+            <Signal kind="verified" label="Who it fits" />
+            <ul className="mt-5 space-y-3.5">
+              {whoFits.map((item) => (
+                <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-ink/78"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-verified" />{item}</li>
+              ))}
+            </ul>
           </div>
-          <h2 className="mt-4 font-display text-3xl font-medium text-ink md:text-4xl">
-            Operating sequence
-          </h2>
-
-          <ol className="mt-10 space-y-px overflow-hidden rounded-md border border-line bg-line">
-            {steps.map((s) => (
-              <li key={s.n} className="grid gap-3 bg-paper p-6 md:grid-cols-[64px_1fr] md:gap-6">
-                <span className="font-display text-3xl font-medium text-verified/40">{s.n}</span>
-                <div>
-                  <h3 className="font-display text-lg font-medium text-ink">{s.t}</h3>
-                  <p className="mt-1.5 text-[15px] leading-relaxed text-ink/70">{s.d}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <div className="rounded-md border border-line bg-paper p-7">
+            <Signal kind="caution" label="Who it does not fit" />
+            <ul className="mt-5 space-y-3.5">
+              {whoDoesNotFit.map((item) => (
+                <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-ink/78"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-caution" />{item}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* Honest assessment */}
       <section className="desk-wrap py-16 md:py-20">
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-[12px] text-verified">C</span>
-          <span className="h-px w-8 bg-line" />
-          <span className="eyebrow">Read before you start</span>
-        </div>
-        <h2 className="mt-4 font-display text-3xl font-medium text-ink md:text-4xl">
-          Honest assessment
-        </h2>
-
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {honest.map((h) => (
-            <div key={h.t} className="rounded-md border border-line bg-surface p-6">
-              <h3 className="font-display text-lg font-medium text-ink">{h.t}</h3>
-              <p className="mt-3 text-[14px] leading-relaxed text-ink/70">{h.d}</p>
+        <SectionHead index="02" eyebrow="Tools required" title="Start with tools that prove competence before complexity" />
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {model.startingTools.map((tool) => (
+            <div key={tool} className="rounded-md border border-line bg-surface p-6">
+              <p className="font-display text-lg font-medium text-ink">{tool}</p>
             </div>
           ))}
         </div>
+      </section>
 
-        <div className="mt-10 rounded-md border border-caution/40 bg-caution/[0.05] p-6">
-          <Signal kind="caution" label="Standing notice" />
-          <p className="mt-3 max-w-3xl text-[14px] leading-relaxed text-ink/80">
-            This page is income literacy, not financial advice or a guarantee of earnings. Results
-            depend on your skill, your market, and your effort. Always follow lawful business
-            practice and apply your own judgement.
-          </p>
+      <section className="border-y border-line bg-surface py-16 md:py-20">
+        <div className="desk-wrap grid gap-10 lg:grid-cols-2">
+          <div>
+            <SectionHead index="03" eyebrow="First 7 days" title="A small test for outreach and proof" />
+            <ol className="mt-8 space-y-px overflow-hidden rounded-md border border-line bg-line">
+              {firstSevenDays.map((step, index) => (
+                <li key={step} className="grid grid-cols-[56px_1fr] gap-4 bg-paper p-5">
+                  <span className="font-display text-2xl text-verified/45">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="text-[15px] leading-relaxed text-ink/78">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div>
+            <SectionHead index="04" eyebrow="First 30 days" title="Read the market, not the fantasy" />
+            <ol className="mt-8 space-y-px overflow-hidden rounded-md border border-line bg-line">
+              {firstThirtyDays.map((step, index) => (
+                <li key={step} className="grid grid-cols-[56px_1fr] gap-4 bg-paper p-5">
+                  <span className="font-display text-2xl text-verified/45">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="text-[15px] leading-relaxed text-ink/78">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
+      </section>
 
-        <div className="mt-12 flex flex-wrap gap-3">
-          <Link
-            href="/#income-models"
-            className="focusable inline-flex items-center rounded-sm border border-ink px-5 py-3 font-mono text-[12px] uppercase tracking-[0.12em] text-ink transition-colors hover:bg-ink hover:text-paper"
-          >
-            ← Back to all models
-          </Link>
-          <Link
-            href="/#anti-scam"
-            className="focusable inline-flex items-center rounded-sm bg-verified px-5 py-3 font-mono text-[12px] uppercase tracking-[0.12em] text-paper transition-colors hover:bg-verified/90"
-          >
-            Read the anti-scam notes
-          </Link>
+      <section className="desk-wrap py-16 md:py-20">
+        <SectionHead index="05" eyebrow="Pricing reality" title="Pricing must match trust, scope, and support" />
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {[
+            ["Build fee", "A one-time fee should reflect a clear deliverable: pages, contact details, images, copy support, and handover."],
+            ["Maintenance", "A recurring fee only makes sense when it covers real support: updates, edits, backups, hosting coordination, or periodic improvements."],
+            ["Trust discount", "Early clients may need a lower-risk first offer because they are buying trust as much as a website."],
+          ].map(([title, body]) => (
+            <article key={title} className="rounded-md border border-line bg-surface p-6">
+              <h3 className="font-display text-lg font-medium text-ink">{title}</h3>
+              <p className="mt-3 text-[14px] leading-relaxed text-ink/70">{body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-line bg-ink py-16 text-paper md:py-20">
+        <div className="desk-wrap grid gap-10 lg:grid-cols-2">
+          <div>
+            <SectionHead index="06" eyebrow="Common lies" title="What the pitch often hides" inverse />
+            <ul className="mt-8 space-y-3">
+              {commonLies.map((item) => (
+                <li key={item} className="rounded-md border border-line-dark bg-ink-2 p-4 text-[15px] leading-relaxed text-paper/72">{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <SectionHead index="07" eyebrow="Proof signals and failure points" title="How to judge the model honestly" inverse />
+            <div className="mt-8 grid gap-4">
+              <div className="rounded-md border border-line-dark bg-ink-2 p-5">
+                <Signal kind="verified" label="Proof signals" />
+                <ul className="mt-4 space-y-2 text-[14px] leading-relaxed text-paper/72">
+                  {model.proofSignals.map((item) => <li key={item}>• {item}</li>)}
+                </ul>
+              </div>
+              <div className="rounded-md border border-line-dark bg-ink-2 p-5">
+                <Signal kind="caution" label="Failure points" />
+                <ul className="mt-4 space-y-2 text-[14px] leading-relaxed text-paper/72">
+                  {model.failurePoints.map((item) => <li key={item}>• {item}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="desk-wrap py-16 md:py-20">
+        <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+          <div className="rounded-md border border-line bg-surface p-7">
+            <Signal kind="caution" label="Ethical boundary" />
+            <ul className="mt-5 space-y-3.5">
+              {ethicalBoundary.map((item) => (
+                <li key={item} className="text-[15px] leading-relaxed text-ink/78">• {item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-md border border-verified/30 bg-surface p-7">
+            <Signal kind={model.status} label="Verdict" />
+            <p className="mt-5 text-[16px] leading-relaxed text-ink/78">{model.verdict}</p>
+            <p className="mt-4 text-[14px] leading-relaxed text-ink/65">
+              Evidence not yet verified for any specific reader. Treat the next step as a bounded test, not a commitment.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/field-tests" className="focusable inline-flex items-center rounded-sm bg-verified px-5 py-3 font-mono text-[12px] uppercase tracking-[0.12em] text-paper hover:bg-verified/90">
+                Start a 7-day test
+              </Link>
+              <Link href="/income-models" className="focusable inline-flex items-center rounded-sm border border-ink px-5 py-3 font-mono text-[12px] uppercase tracking-[0.12em] text-ink hover:bg-ink hover:text-paper">
+                Back to registry
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

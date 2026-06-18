@@ -14,9 +14,5 @@ export default function Signal({
   kind: SignalKind;
   label?: string;
 }) {
-  return (
-    <span className={`signal ${classMap[kind]}`}>
-      {label ?? signalLabels[kind]}
-    </span>
-  );
+  return <span className={`signal ${classMap[kind]}`}>{label ?? signalLabels[kind]}</span>;
 }

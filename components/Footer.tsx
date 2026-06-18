@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { nav, site } from "@/lib/site";
+import { footerLinks, site } from "@/lib/site";
 
 export default function Footer() {
   return (
     <footer className="border-t border-line-dark bg-ink text-paper">
       <div className="desk-wrap py-14">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.25fr_1fr_1.2fr]">
           <div>
             <div className="flex items-center gap-3">
               <span
@@ -14,19 +14,24 @@ export default function Footer() {
               >
                 VID
               </span>
-              <span className="font-display text-lg">Verified Income Desk</span>
+              <span>
+                <span className="block font-display text-lg">{site.name}</span>
+                <span className="block font-mono text-[10px] uppercase tracking-eyebrow text-paper/45">
+                  {site.tagline}
+                </span>
+              </span>
             </div>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-paper/70">
-              {site.description}
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-paper/70">
+              Verified Income Desk studies income claims, proof signals, scam behavior, and realistic service pathways for phone-first and local economies.
             </p>
           </div>
 
           <div>
             <h2 className="font-mono text-[11px] uppercase tracking-eyebrow text-paper/50">
-              Sections
+              Desk links
             </h2>
-            <ul className="mt-4 space-y-2">
-              {nav.map((item) => (
+            <ul className="mt-4 grid gap-2">
+              {footerLinks.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -41,12 +46,10 @@ export default function Footer() {
 
           <div>
             <h2 className="font-mono text-[11px] uppercase tracking-eyebrow text-paper/50">
-              Standing notice
+              Disclaimer
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-paper/70">
-              Verified Income Desk publishes income literacy, not financial advice. Nothing here
-              is a promise of earnings. Always apply your own judgement and follow lawful business
-              practice.
+              Verified Income Desk provides educational income-literacy content. It does not guarantee income, provide financial advice, or endorse illegal, deceptive, or exploitative earning schemes.
             </p>
           </div>
         </div>
@@ -56,7 +59,7 @@ export default function Footer() {
             © {new Date().getFullYear()} {site.name}
           </p>
           <p className="font-mono uppercase tracking-[0.1em]">
-            Proof over promises
+            Internet income literacy without illusion
           </p>
         </div>
       </div>

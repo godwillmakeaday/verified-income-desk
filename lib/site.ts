@@ -1,177 +1,269 @@
-// lib/site.ts
-// Site-wide structured data and lightweight library indexes.
-
-import type { NavCard, SpecialistCentre } from "./types";
-
 export const site = {
-  name: "Health Clarity Institute Nigeria",
-  shortName: "Health Clarity Institute",
-  initials: "HCI",
-  tagline: "Clear medical knowledge for Nigerian patients and institutions.",
+  name: "Verified Income Desk",
+  short: "VID",
+  tagline: "Income literacy, tested in public.",
   description:
-    "A Nigerian health education, patient clarity and specialist-care intelligence platform. Evidence-informed guides, patient navigation and Nigerian-context medical education.",
-  url: "https://healthclarity.ng",
-  email: "hello@healthclarity.ng",
-  emergencyNote:
-    "In an emergency, go to the nearest hospital immediately. This platform is for education and does not replace urgent medical care.",
+    "Verified Income Desk is a public-interest income literacy platform for tested income models, realistic digital work pathways, local business service experiments, anti-scam education, proof signals, and field-tested earning playbooks.",
+  url: "https://verifiedincomedesk.org",
 };
 
-export const primaryNav: { label: string; href: string }[] = [
-  { label: "Health Library", href: "/health-library" },
-  { label: "Conditions A–Z", href: "/conditions" },
-  { label: "Symptoms A–Z", href: "/symptoms" },
-  { label: "Specialist Centres", href: "/specialist-centres" },
-  { label: "Nigerian Context", href: "/nigerian-health-context" },
-  { label: "For Institutions", href: "/for-hospitals" },
+export type SignalKind = "verified" | "test" | "caution" | "flag";
+
+export const signalLabels: Record<SignalKind, string> = {
+  verified: "Verified",
+  test: "Under test",
+  caution: "Caution",
+  flag: "Flagged",
+};
+
+export const nav = [
+  { label: "What this is", href: "/#what-this-is" },
+  { label: "Income models", href: "/#income-models" },
+  { label: "Field tests", href: "/#field-tests" },
+  { label: "Proof signals", href: "/#proof-signals" },
+  { label: "Anti-scam", href: "/#anti-scam" },
+  { label: "Playbooks", href: "/#playbooks" },
+  { label: "Methodology", href: "/#methodology" },
 ];
 
-// Section 3 — core navigation cards
-export const coreNavCards: NavCard[] = [
-  { title: "Conditions A–Z", description: "Plain-language guides to diseases and long-term conditions.", href: "/conditions" },
-  { title: "Symptoms A–Z", description: "Understand what a symptom may mean and when to act.", href: "/symptoms" },
-  { title: "Tests & Procedures", description: "What common tests check, how they are done and what results mean.", href: "/tests-procedures" },
-  { title: "Medicines & Treatment Guides", description: "How treatments work, used safely and as prescribed.", href: "/medicines" },
-  { title: "Prevention Guides", description: "Screening, vaccines and habits that lower your risk.", href: "/prevention" },
-  { title: "Emergency Warning Signs", description: "Signs that mean you should seek urgent care now.", href: "/conditions/stroke" },
-  { title: "Nigerian Health Context", description: "Cost, access, late diagnosis and decisions families face.", href: "/nigerian-health-context" },
-  { title: "Specialist Centres", description: "Curated knowledge organised by area of care.", href: "/specialist-centres" },
-];
-
-// Section 4 / 5 — specialist centres
-export const specialistCentres: SpecialistCentre[] = [
-  {
-    slug: "heart-blood-pressure",
-    name: "Heart & Blood Pressure Centre",
-    focus: "Cardiovascular health",
-    description: "Blood pressure, heart disease and stroke prevention and care.",
-    conditionSlugs: ["hypertension", "stroke"],
-  },
-  {
-    slug: "diabetes-metabolic",
-    name: "Diabetes & Metabolic Health Centre",
-    focus: "Blood sugar & metabolism",
-    description: "Diabetes, blood sugar control and related metabolic conditions.",
-    conditionSlugs: ["diabetes"],
-  },
-  {
-    slug: "maternal-health",
-    name: "Maternal Health Centre",
-    focus: "Pregnancy & newborn care",
-    description: "Safe pregnancy, danger signs, antenatal and postnatal care.",
-    conditionSlugs: ["pregnancy-danger-signs"],
-  },
-  {
-    slug: "kidney-health",
-    name: "Kidney Health Centre",
-    focus: "Renal care",
-    description: "Kidney disease, prevention and protecting kidney function.",
-    conditionSlugs: ["kidney-disease"],
-  },
-  {
-    slug: "mental-behavioural",
-    name: "Mental & Behavioural Health Centre",
-    focus: "Mind & wellbeing",
-    description: "Mental health understanding, support pathways and stigma-free care.",
-    conditionSlugs: [],
-  },
-  {
-    slug: "preventive-health",
-    name: "Preventive Health Centre",
-    focus: "Screening & protection",
-    description: "Screening, vaccines, malaria prevention and healthy habits.",
-    conditionSlugs: ["malaria"],
-  },
-];
-
-export function getCentreBySlug(slug: string) {
-  return specialistCentres.find((c) => c.slug === slug);
-}
-
-// Section 6 — featured guides on the homepage
-export const featuredGuideSlugs = [
-  "hypertension",
-  "diabetes",
-  "malaria",
-  "stroke",
-  "kidney-disease",
-  "pregnancy-danger-signs",
-];
-
-// Section 7 — patient navigation by intent
-export const patientNavigation: { title: string; description: string; href: string }[] = [
-  { title: "I have symptoms", description: "Start from what you are feeling and learn what it may mean.", href: "/symptoms" },
-  { title: "I need to understand my diagnosis", description: "Clear guides to conditions, in plain language.", href: "/conditions" },
-  { title: "I want to prepare for a hospital visit", description: "Questions to ask and what to bring.", href: "/conditions/hypertension#questions" },
-  { title: "I want to know when it is urgent", description: "Recognise emergency warning signs early.", href: "/conditions/stroke#urgent" },
-  { title: "I need a screening guide", description: "Find out what to check and how often.", href: "/prevention" },
-];
-
-// Section 8 — institutional services
-export const institutionalServices: { title: string; description: string }[] = [
-  { title: "Premium hospital websites", description: "Credible, fast, well-structured sites that reflect the standard of your care." },
-  { title: "Patient education libraries", description: "Branded, reviewed health content libraries for your patients and community." },
-  { title: "Doctor profile systems", description: "Structured, searchable profiles for your clinicians and specialties." },
-  { title: "Appointment & intake pages", description: "Clear pathways for patients to reach and prepare for your services." },
-  { title: "Preventive health campaigns", description: "Screening and awareness campaigns built on accurate information." },
-  { title: "Medical content strategy", description: "Editorial planning and review workflows for trustworthy health content." },
-  { title: "Health documentation systems", description: "Policies, patient materials and knowledge bases, properly structured." },
-];
-
-// Section 9 — trust system
-export const trustPoints: { label: string; detail: string }[] = [
-  { label: "Written for education", detail: "Plain-language guides to help you understand, not to replace your clinician." },
-  { label: "Reviewed by professionals", detail: "Content is checked by qualified reviewers before publication." },
-  { label: "Sources listed", detail: "Each guide cites the references it is based on." },
-  { label: "Last reviewed dates", detail: "Every guide shows when it was last checked and when it is due again." },
-  { label: "Not a substitute for advice", detail: "Always seek diagnosis and treatment from a qualified professional." },
-  { label: "Emergency guidance included", detail: "Guides flag clearly when a situation needs urgent care." },
-];
-
-// ─────────────────────────── lightweight library indexes (placeholder data) ──
-// These power the Symptoms / Tests / Medicines / Prevention A–Z pages until full
-// articles are authored. Each is intentionally minimal — the same data shape can
-// later be promoted to a full HealthArticle.
-
-export interface LibraryEntry {
-  slug: string;
+export type IncomeModel = {
+  code: string;
   title: string;
-  blurb: string;
-}
+  href?: string;
+  signal: SignalKind;
+  effort: string;
+  capital: string;
+  summary: string;
+};
 
-export const symptoms: LibraryEntry[] = [
-  { slug: "chest-pain", title: "Chest pain", blurb: "Causes range from minor to emergency — learn the warning signs." },
-  { slug: "fever", title: "Fever", blurb: "When a raised temperature needs testing and when it needs urgent care." },
-  { slug: "headache", title: "Headache", blurb: "Common types and the features that signal something serious." },
-  { slug: "shortness-of-breath", title: "Shortness of breath", blurb: "Understanding breathlessness and when to seek help." },
-  { slug: "abdominal-pain", title: "Abdominal pain", blurb: "What different kinds of tummy pain may indicate." },
-  { slug: "dizziness", title: "Dizziness", blurb: "Feeling faint or unsteady — possible causes and red flags." },
-  { slug: "swelling-legs", title: "Swelling in the legs", blurb: "Fluid build-up and what it can mean." },
-  { slug: "fatigue", title: "Persistent tiredness", blurb: "When ongoing fatigue is worth investigating." },
+export const incomeModels: IncomeModel[] = [
+  {
+    code: "IM-01",
+    title: "Local business website services",
+    href: "/income-models/local-business-website-services",
+    signal: "verified",
+    effort: "Skill-led",
+    capital: "Low",
+    summary:
+      "Building and maintaining simple websites for nearby shops, clinics, schools, and tradespeople who currently have no web presence.",
+  },
+  {
+    code: "IM-02",
+    title: "Document and form assistance",
+    signal: "verified",
+    effort: "Service",
+    capital: "Very low",
+    summary:
+      "Helping people prepare, format, and submit common documents and applications correctly the first time, charging a transparent per-task fee.",
+  },
+  {
+    code: "IM-03",
+    title: "Smartphone content production",
+    signal: "test",
+    effort: "Time-led",
+    capital: "Very low",
+    summary:
+      "Producing useful short video and written content from a phone for a defined niche, measured against real audience and payout data over time.",
+  },
+  {
+    code: "IM-04",
+    title: "Freelance digital tasks",
+    signal: "test",
+    effort: "Skill-led",
+    capital: "Low",
+    summary:
+      "Selling discrete, deliverable skills — design, writing, data entry, transcription — on platforms, tracked for realistic effective hourly rates.",
+  },
+  {
+    code: "IM-05",
+    title: "Local resale and sourcing",
+    signal: "caution",
+    effort: "Capital-led",
+    capital: "Medium",
+    summary:
+      "Buying and reselling goods within a local market. Workable, but margins and demand are frequently overstated by sellers of 'systems'.",
+  },
+  {
+    code: "IM-06",
+    title: '"Guaranteed daily returns" programs',
+    signal: "flag",
+    effort: "—",
+    capital: "Your money, lost",
+    summary:
+      "Any model promising fixed daily or weekly returns for a deposit. Recorded here only so it can be recognised and avoided.",
+  },
 ];
 
-export const tests: LibraryEntry[] = [
-  { slug: "blood-pressure-check", title: "Blood pressure check", blurb: "How it is measured and what the numbers mean." },
-  { slug: "blood-sugar-test", title: "Blood sugar test", blurb: "Fasting glucose and HbA1c explained." },
-  { slug: "malaria-rdt", title: "Malaria rapid test (RDT)", blurb: "How malaria is confirmed before treatment." },
-  { slug: "kidney-function-test", title: "Kidney function test", blurb: "Creatinine, eGFR and urine tests for the kidneys." },
-  { slug: "full-blood-count", title: "Full blood count", blurb: "What this common blood test checks." },
-  { slug: "ultrasound-scan", title: "Ultrasound scan", blurb: "How and why ultrasound is used, including in pregnancy." },
+export type FieldTest = {
+  id: string;
+  model: string;
+  question: string;
+  status: SignalKind;
+  finding: string;
+  window: string;
+};
+
+export const fieldTests: FieldTest[] = [
+  {
+    id: "FT-2024-07",
+    model: "Local business website services",
+    question: "Can one operator land and keep three paying local clients in a quarter?",
+    status: "verified",
+    finding:
+      "Reproducible with cold outreach and a fixed maintenance fee. Acquisition is the hard part, not delivery.",
+    window: "12-week run",
+  },
+  {
+    id: "FT-2024-11",
+    model: "Smartphone content production",
+    question: "Does a phone-only niche channel reach payout thresholds in 90 days?",
+    status: "test",
+    finding:
+      "Partial. Reach grows, but monetisation lags well past the timelines sold by most courses. Ongoing.",
+    window: "Open",
+  },
+  {
+    id: "FT-2025-02",
+    model: "Freelance digital tasks",
+    question: "What is the real effective hourly rate after fees and unpaid bidding time?",
+    status: "caution",
+    finding:
+      "Viable, but headline rates ignore proposal time. Measured net rate landed far below advertised figures.",
+    window: "8-week run",
+  },
+  {
+    id: "FT-2025-05",
+    model: '"Guaranteed returns" deposit program',
+    question: "Does the advertised payout schedule survive contact with a small test deposit?",
+    status: "flag",
+    finding:
+      "No. Payouts stopped once reinvestment was declined. Classic withdrawal-block pattern. Do not participate.",
+    window: "Closed — flagged",
+  },
 ];
 
-export const medicines: LibraryEntry[] = [
-  { slug: "antihypertensives", title: "Blood pressure medicines", blurb: "Main groups, how they work and using them safely." },
-  { slug: "metformin", title: "Metformin", blurb: "A first-line medicine for type 2 diabetes." },
-  { slug: "act-antimalarials", title: "Antimalarials (ACTs)", blurb: "Recommended malaria treatment and completing the course." },
-  { slug: "paracetamol", title: "Paracetamol", blurb: "Safe use for fever and pain, and avoiding overdose." },
-  { slug: "iron-folate", title: "Iron & folate supplements", blurb: "Used in pregnancy and to treat anaemia." },
-  { slug: "antibiotics-safe-use", title: "Antibiotics — safe use", blurb: "Why they are not for every illness, and resistance." },
+export type ProofSignal = {
+  kind: SignalKind;
+  name: string;
+  meaning: string;
+};
+
+export const proofSignals: ProofSignal[] = [
+  {
+    kind: "verified",
+    name: "Verified",
+    meaning:
+      "A real operator reached a stated, modest result under conditions we can describe, and the path is reproducible.",
+  },
+  {
+    kind: "test",
+    name: "Under test",
+    meaning:
+      "An active field test is running. The model is plausible but the evidence is incomplete. Treat as provisional.",
+  },
+  {
+    kind: "caution",
+    name: "Caution",
+    meaning:
+      "The model can work, but it is routinely oversold. Specific claims, margins, or timelines do not hold up.",
+  },
+  {
+    kind: "flag",
+    name: "Flagged",
+    meaning:
+      "Shows scam structure — guaranteed returns, withdrawal blocks, recruitment dependence, or payment to start work.",
+  },
 ];
 
-export const preventionGuides: LibraryEntry[] = [
-  { slug: "blood-pressure-screening", title: "Blood pressure screening", blurb: "Who should check, and how often." },
-  { slug: "diabetes-screening", title: "Diabetes screening", blurb: "Spotting raised blood sugar before symptoms." },
-  { slug: "malaria-prevention", title: "Malaria prevention", blurb: "Nets, environment and protection in pregnancy." },
-  { slug: "antenatal-care", title: "Antenatal care schedule", blurb: "Why and when to attend during pregnancy." },
-  { slug: "healthy-eating", title: "Healthy eating basics", blurb: "Practical food choices for lower risk." },
-  { slug: "physical-activity", title: "Physical activity", blurb: "Simple, affordable ways to stay active." },
+export type ScamNote = {
+  tell: string;
+  detail: string;
+};
+
+export const scamNotes: ScamNote[] = [
+  {
+    tell: "Pay to start earning",
+    detail:
+      "Legitimate work pays you. Activation fees, 'training' deposits, or required starter kits invert that and are a primary red flag.",
+  },
+  {
+    tell: "Guaranteed or fixed returns",
+    detail:
+      "No lawful income model can promise a fixed daily or weekly return on a deposit. The promise itself is the warning.",
+  },
+  {
+    tell: "Income depends on recruiting",
+    detail:
+      "If you earn mainly by enrolling others rather than selling a real product or service, the structure is a recruitment scheme.",
+  },
+  {
+    tell: "Withdrawal friction",
+    detail:
+      "Easy to deposit, hard to withdraw. Sudden 'fees', 'taxes', or 'verification' demands at cash-out are a collapse signal.",
+  },
+  {
+    tell: "Urgency and secrecy",
+    detail:
+      "Countdown timers, 'limited slots', and pressure not to research are engineered to stop you from checking the facts.",
+  },
+];
+
+export type Playbook = {
+  step: string;
+  title: string;
+  detail: string;
+};
+
+export const playbooks: Playbook[] = [
+  {
+    step: "01",
+    title: "Pick one verified model",
+    detail:
+      "Choose a single model carrying a Verified signal. Resist running several at once before any one earns.",
+  },
+  {
+    step: "02",
+    title: "Define a small, real result",
+    detail:
+      "Set a modest target you could plausibly hit in weeks — one paying client, one completed order — not a monthly income fantasy.",
+  },
+  {
+    step: "03",
+    title: "Run a fixed-window test",
+    detail:
+      "Give it a defined window. Track effort, cost, and outcome honestly so you can tell signal from noise.",
+  },
+  {
+    step: "04",
+    title: "Read the proof, not the pitch",
+    detail:
+      "Compare your own numbers to the field-test findings here. If a model only works in the brochure, stop and switch.",
+  },
+];
+
+export const methodology = [
+  {
+    step: "01",
+    title: "Source the claim",
+    detail:
+      "We start from a specific income claim circulating online or locally, written out in plain terms.",
+  },
+  {
+    step: "02",
+    title: "Test in the field",
+    detail:
+      "Where lawful and safe, the model is run as a small, bounded experiment by a real operator, not simulated.",
+  },
+  {
+    step: "03",
+    title: "Record the evidence",
+    detail:
+      "Effort, capital, timelines, and outcomes are logged — including failures — and reduced to one proof signal.",
+  },
+  {
+    step: "04",
+    title: "Publish without hype",
+    detail:
+      "Findings are written soberly, with the limits stated. A modest verified result beats an exciting unverified one.",
+  },
 ];

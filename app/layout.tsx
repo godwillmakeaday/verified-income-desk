@@ -1,62 +1,51 @@
 import type { Metadata } from "next";
-import { Newsreader, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { site } from "@/lib/site";
 import "./globals.css";
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-newsreader",
-  display: "swap",
-});
-
-const plexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-plex-sans",
-  display: "swap",
-});
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-plex-mono",
-  display: "swap",
-});
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s · ${site.shortName}`,
+    default: "Verified Income Desk — Income literacy, tested in public",
+    template: "%s · Verified Income Desk",
   },
   description: site.description,
   keywords: [
-    "Nigerian health information",
-    "health library Nigeria",
-    "patient education",
-    "conditions A to Z",
-    "Nigerian medical guides",
+    "income literacy",
+    "tested income models",
+    "anti-scam education",
+    "field-tested earning",
+    "digital work pathways",
+    "local business website services",
+    "proof signals",
   ],
   openGraph: {
-    type: "website",
-    locale: "en_NG",
+    title: "Verified Income Desk",
+    description: site.description,
+    url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Verified Income Desk",
     description: site.description,
   },
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en-NG" className={`${newsreader.variable} ${plexSans.variable} ${plexMono.variable}`}>
-      <body>
+    <html lang="en">
+      <body className="min-h-screen bg-paper antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-navy focus:px-4 focus:py-2 focus:text-white"
+          className="focusable sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-sm focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest focus:text-paper"
         >
           Skip to content
         </a>
